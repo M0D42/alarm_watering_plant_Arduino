@@ -80,18 +80,19 @@ The code includes the following functionalities:
 6. **Loop Function**
     ```cpp
     void loop() {
-        DateTime time1 = rtc.now();
-        
-        // Activate water pump at the specified hour
-        if (alarm1 == time1.hour() && counter == 0) {
-            waterpump();
-            counter++;
-        }
-        
-        // Reset counter when hour is not the alarm hour
-        if (alarm1 != time1.hour()) {
-            counter = 0;
-        }
+      // Get current time
+      DateTime time1 = rtc.now();
+    
+      // Check if it's the correct day and the correct hour to activate the pump
+      if (alarm1 == time1.hour() && targetDay == time1.dayOfTheWeek() && counter == 0) {
+        waterpump();
+        counter++;  // Ensure it only runs once per activation
+      }
+    
+      // Reset the counter if the time isn't the alarm time or the day isn't the target day
+      if (alarm1 != time1.hour() || targetDay != time1.dayOfTheWeek()) {
+        counter = 0;
+      }
     }
     ```
 
