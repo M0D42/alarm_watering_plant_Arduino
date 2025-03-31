@@ -52,10 +52,10 @@ The code includes the following functionalities:
 4. **Water Pump Function**
     ```cpp
     void waterpump() {
-        Serial.println("Waterpump function on");
-        digitalWrite(motorA, 1);
-        delay(delayX);
-        digitalWrite(motorA, 0);
+      Serial.println("Waterpump function on");
+      digitalWrite(motorA, HIGH);
+      delay(delayX);
+      digitalWrite(motorA, LOW);;
     }
     ```
 
